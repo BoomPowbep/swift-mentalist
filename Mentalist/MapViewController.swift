@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var map: MKMapView!
     
@@ -21,6 +21,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        map.delegate = self
     }
     
     
@@ -33,7 +34,7 @@ class MapViewController: UIViewController {
                     self.cities.append(cityNameAsString)
                     self.locationManager.getLocation(forPlaceCalled: cityNameAsString) { (location) in
                         if let loc = location {
-                            self.addMarker(for: loc)
+                            self.addMarker(for: loc, name: cityNameAsString)
                         }
                     }
                 }
@@ -44,10 +45,21 @@ class MapViewController: UIViewController {
         }
     }
     
-    func addMarker(for location:CLLocation) {
+    func addMarker(for location:CLLocation, name: String) {
         let annotation = MKPointAnnotation()
         annotation.coordinate = location.coordinate
+        annotation.title = name
         map.addAnnotation(annotation)
     }
+ 
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let annotationTitle = view.annotation?.title {
+            print("User tapped on annotation with title: \(annotationTitle!)")
+            
+            if let url = URL(string: "https://fr.wikipedia.org/wiki/\(annotationTitle!)") {
+                UIApplication.shared.open(url)
+            }
+        }
+    }
 }
