@@ -21,7 +21,7 @@ extension DataConvertible {
         }
         self = data.withUnsafeBytes { $0.pointee }
     }
-    
+
     public var data:Data {
         var value = self
         return Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
@@ -197,7 +197,7 @@ extension Data {
             return i32array[0]
         }
     }
-    
+
     var uint64: UInt64 {
         get {
             let i64array = self.withUnsafeBytes {
@@ -206,7 +206,7 @@ extension Data {
             return i64array[0]
         }
     }
-    
+
     var uuid: NSUUID? {
         get {
             var bytes = [UInt8](repeating: 0, count: self.count)

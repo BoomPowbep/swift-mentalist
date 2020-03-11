@@ -22,9 +22,7 @@
 		BB82BA332418F6CD007AEE44 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82BA322418F6CD007AEE44 /* Helpers.swift */; };
 		BB82BA352418FA62007AEE44 /* BLEChunker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82BA342418FA62007AEE44 /* BLEChunker.swift */; };
 		BB82BA3A2418FAC6007AEE44 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82BA372418FAC6007AEE44 /* ArrayExtensions.swift */; };
-		BB82BA3B2418FAC6007AEE44 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82BA382418FAC6007AEE44 /* StringExtensions.swift */; };
 		BB82BA3C2418FAC6007AEE44 /* DataConvertibleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82BA392418FAC6007AEE44 /* DataConvertibleExtensions.swift */; };
-		BB82BA3E2418FBF9007AEE44 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82BA3D2418FBF9007AEE44 /* DataManager.swift */; };
 		BB82BA4224190E91007AEE44 /* LetterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82BA4124190E91007AEE44 /* LetterCollectionViewCell.swift */; };
 		BB82BA442419137C007AEE44 /* LettersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82BA432419137C007AEE44 /* LettersViewController.swift */; };
 		BB82BA4624191A2A007AEE44 /* FinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82BA4524191A2A007AEE44 /* FinalViewController.swift */; };
@@ -62,9 +60,7 @@
 		BB82BA322418F6CD007AEE44 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		BB82BA342418FA62007AEE44 /* BLEChunker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEChunker.swift; sourceTree = "<group>"; };
 		BB82BA372418FAC6007AEE44 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
-		BB82BA382418FAC6007AEE44 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		BB82BA392418FAC6007AEE44 /* DataConvertibleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataConvertibleExtensions.swift; sourceTree = "<group>"; };
-		BB82BA3D2418FBF9007AEE44 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		BB82BA4124190E91007AEE44 /* LetterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterCollectionViewCell.swift; sourceTree = "<group>"; };
 		BB82BA432419137C007AEE44 /* LettersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LettersViewController.swift; sourceTree = "<group>"; };
 		BB82BA4524191A2A007AEE44 /* FinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +86,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB17F535241934AE006CE6A0 /* StringMetric */ = {
+			isa = PBXGroup;
+			children = (
+				BB82BA4D24191FB1007AEE44 /* String+Extension.swift */,
+				BB82BA4C24191FB1007AEE44 /* StringMetric.swift */,
+			);
+			path = StringMetric;
+			sourceTree = "<group>";
+		};
+		BB17F536241934E0006CE6A0 /* BLE */ = {
+			isa = PBXGroup;
+			children = (
+				BB82BA342418FA62007AEE44 /* BLEChunker.swift */,
+				BB82BA302418F6C4007AEE44 /* ChatPeripherals.swift */,
+				BB82BA2E2418F4A8007AEE44 /* BLEManager.swift */,
+			);
+			path = BLE;
+			sourceTree = "<group>";
+		};
+		BB17F537241934F8006CE6A0 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				BB17F53124192814006CE6A0 /* LocationManager.swift */,
+				BB17F53324192DBA006CE6A0 /* MentalistManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		BB82BA002418F447007AEE44 = {
 			isa = PBXGroup;
 			children = (
@@ -111,19 +135,15 @@
 		BB82BA0B2418F447007AEE44 /* Mentalist */ = {
 			isa = PBXGroup;
 			children = (
-				BB82BA4D24191FB1007AEE44 /* String+Extension.swift */,
-				BB82BA4C24191FB1007AEE44 /* StringMetric.swift */,
+				BB17F537241934F8006CE6A0 /* Managers */,
+				BB17F536241934E0006CE6A0 /* BLE */,
+				BB17F535241934AE006CE6A0 /* StringMetric */,
 				BB82BA362418FAC6007AEE44 /* Extensions */,
-				BB82BA342418FA62007AEE44 /* BLEChunker.swift */,
 				BB82BA322418F6CD007AEE44 /* Helpers.swift */,
-				BB82BA302418F6C4007AEE44 /* ChatPeripherals.swift */,
-				BB82BA2E2418F4A8007AEE44 /* BLEManager.swift */,
 				BB82BA0C2418F447007AEE44 /* AppDelegate.swift */,
 				BB82BA0E2418F447007AEE44 /* SceneDelegate.swift */,
-				BB17F53124192814006CE6A0 /* LocationManager.swift */,
 				BB17F52F24192612006CE6A0 /* MapViewController.swift */,
 				BB82BA102418F447007AEE44 /* ViewController.swift */,
-				BB17F53324192DBA006CE6A0 /* MentalistManager.swift */,
 				BB82BA432419137C007AEE44 /* LettersViewController.swift */,
 				BB82BA4124190E91007AEE44 /* LetterCollectionViewCell.swift */,
 				BB82BA4524191A2A007AEE44 /* FinalViewController.swift */,
@@ -131,7 +151,6 @@
 				BB82BA152418F448007AEE44 /* Assets.xcassets */,
 				BB82BA172418F448007AEE44 /* LaunchScreen.storyboard */,
 				BB82BA1A2418F448007AEE44 /* Info.plist */,
-				BB82BA3D2418FBF9007AEE44 /* DataManager.swift */,
 			);
 			path = Mentalist;
 			sourceTree = "<group>";
@@ -149,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				BB82BA372418FAC6007AEE44 /* ArrayExtensions.swift */,
-				BB82BA382418FAC6007AEE44 /* StringExtensions.swift */,
 				BB82BA392418FAC6007AEE44 /* DataConvertibleExtensions.swift */,
 			);
 			path = Extensions;
@@ -262,7 +280,6 @@
 				BB82BA4624191A2A007AEE44 /* FinalViewController.swift in Sources */,
 				BB82BA332418F6CD007AEE44 /* Helpers.swift in Sources */,
 				BB82BA2F2418F4A9007AEE44 /* BLEManager.swift in Sources */,
-				BB82BA3B2418FAC6007AEE44 /* StringExtensions.swift in Sources */,
 				BB82BA4224190E91007AEE44 /* LetterCollectionViewCell.swift in Sources */,
 				BB82BA442419137C007AEE44 /* LettersViewController.swift in Sources */,
 				BB17F53224192814006CE6A0 /* LocationManager.swift in Sources */,
@@ -270,7 +287,6 @@
 				BB82BA3C2418FAC6007AEE44 /* DataConvertibleExtensions.swift in Sources */,
 				BB82BA0D2418F447007AEE44 /* AppDelegate.swift in Sources */,
 				BB82BA0F2418F447007AEE44 /* SceneDelegate.swift in Sources */,
-				BB82BA3E2418FBF9007AEE44 /* DataManager.swift in Sources */,
 				BB82BA352418FA62007AEE44 /* BLEChunker.swift in Sources */,
 				BB82BA4E24191FB1007AEE44 /* StringMetric.swift in Sources */,
 				BB82BA3A2418FAC6007AEE44 /* ArrayExtensions.swift in Sources */,
