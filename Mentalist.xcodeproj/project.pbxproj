@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BB17F53024192612006CE6A0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB17F52F24192612006CE6A0 /* MapViewController.swift */; };
 		BB17F53224192814006CE6A0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB17F53124192814006CE6A0 /* LocationManager.swift */; };
+		BB17F53424192DBB006CE6A0 /* MentalistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB17F53324192DBA006CE6A0 /* MentalistManager.swift */; };
 		BB82BA0D2418F447007AEE44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82BA0C2418F447007AEE44 /* AppDelegate.swift */; };
 		BB82BA0F2418F447007AEE44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82BA0E2418F447007AEE44 /* SceneDelegate.swift */; };
 		BB82BA112418F447007AEE44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82BA102418F447007AEE44 /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		BB17F52F24192612006CE6A0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BB17F53124192814006CE6A0 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		BB17F53324192DBA006CE6A0 /* MentalistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentalistManager.swift; sourceTree = "<group>"; };
 		BB82BA092418F447007AEE44 /* Mentalist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mentalist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB82BA0C2418F447007AEE44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB82BA0E2418F447007AEE44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				BB17F53124192814006CE6A0 /* LocationManager.swift */,
 				BB17F52F24192612006CE6A0 /* MapViewController.swift */,
 				BB82BA102418F447007AEE44 /* ViewController.swift */,
+				BB17F53324192DBA006CE6A0 /* MentalistManager.swift */,
 				BB82BA432419137C007AEE44 /* LettersViewController.swift */,
 				BB82BA4124190E91007AEE44 /* LetterCollectionViewCell.swift */,
 				BB82BA4524191A2A007AEE44 /* FinalViewController.swift */,
@@ -255,6 +258,7 @@
 			files = (
 				BB82BA4F24191FB1007AEE44 /* String+Extension.swift in Sources */,
 				BB82BA112418F447007AEE44 /* ViewController.swift in Sources */,
+				BB17F53424192DBB006CE6A0 /* MentalistManager.swift in Sources */,
 				BB82BA4624191A2A007AEE44 /* FinalViewController.swift in Sources */,
 				BB82BA332418F6CD007AEE44 /* Helpers.swift in Sources */,
 				BB82BA2F2418F4A9007AEE44 /* BLEManager.swift in Sources */,

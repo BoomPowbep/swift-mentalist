@@ -9,11 +9,6 @@
 import UIKit
 
 class FinalViewController: UIViewController {
-
-    var mysteriousData:[String] = [""]
-    var mysteriousString: String = ""
-    
-    var computed = false
     
     @IBOutlet weak var closestIndexLAbel: UILabel!
     
@@ -37,9 +32,8 @@ class FinalViewController: UIViewController {
             let readDataAsString = readData?.stringUTF8
             print("⬇️ Data read from server: \(readDataAsString ?? "error")")
             
-            // Separate elements in array
-            if let splittedData = readDataAsString?.components(separatedBy: ":") {
-                self.mysteriousData = splittedData
+            if let str = readDataAsString {
+                MentalistManager.instance.processFormattedStringFromServer(str: str)
             }
         }
     }
@@ -49,53 +43,44 @@ class FinalViewController: UIViewController {
         BLEManager.instance.readData { readData in
             let readDataAsString = readData?.stringUTF8
             print("⬇️ Data read from server: \(readDataAsString ?? "error")")
-            
-            if(!self.computed) {
-                self.computed = true
-                self.mysteriousString = readDataAsString ?? "error"
-                self.computeDistance()
-            }
-            else {
-                print("Final answer: \(readDataAsString ?? "error")")
-                self.closestIndexLAbel.text = "Final answer: \(readDataAsString ?? "error")"
+        
+            if let str = readDataAsString {
+                MentalistManager.instance.processStringFormServer(str: str) { (status, index) in
+                    if status {
+                        if let i = index {
+                            self.closestIndexLAbel.text = String(i)
+                        }
+                    }
+                    else {
+                        print("Final answer: \(readDataAsString ?? "error")")
+                        self.closestIndexLAbel.text = "Final answer: \(readDataAsString ?? "error")"
+                    }
+                }
             }
         }
     }
     
-    func computeDistance() {
-        var distances:[Double] = [0.0]
-        
-        for element in mysteriousData {
-            distances.append(element.distance(between: self.mysteriousString))
-        }
-        
-        if let min = distances.min() {
-            if let index = distances.firstIndex(of: min) {
-                print("Closest index: " + String(index))
-                self.closestIndexLAbel.text = String(index)
-                
-            }
-        }
-    }
     
-    func sendFinalAnswer(str:String) {
-        BLEManager.instance.sendData(data: str.data(using: .utf8)!) { (s) in
-            print("⬆️ Sending \(str) to \(s ?? "error")")
+    
+    
+    
+    @IBAction func onHappyButtonClicked(_ sender: Any) {
+        MentalistManager.instance.sendFinalAnswer(str: "content") {
             self.readStringFromServer()
         }
     }
     
-    @IBAction func onHappyButtonClicked(_ sender: Any) {
-        self.sendFinalAnswer(str: "content")
-    }
-    
     
     @IBAction func onUnhappyButtonClicked(_ sender: Any) {
-        self.sendFinalAnswer(str: "pas content")
+        MentalistManager.instance.sendFinalAnswer(str: "pas content"){
+            self.readStringFromServer()
+        }
     }
     
     @IBAction func onWhyButtonClicked(_ sender: Any) {
-        self.sendFinalAnswer(str: "pourquoi j'ai choisi DMII?")
+        MentalistManager.instance.sendFinalAnswer(str: "pourquoi j'ai choisi DMII?"){
+            self.readStringFromServer()
+        }
     }
     
 }

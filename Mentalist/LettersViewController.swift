@@ -12,12 +12,10 @@ class LettersViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var collectionViewElements:[String] = [""]
-    var clickedCells: Int = 0
-    var totalIterations = 1
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let _ = MentalistManager.instance
         
         // Do any additional setup after loading the view.
         collectionView.delegate = self
@@ -32,9 +30,10 @@ class LettersViewController: UIViewController {
             print("⬇️ Data read from server: \(readDataAsString ?? "error")")
             
             // Separate elements in array
-            if let splittedData = readDataAsString?.components(separatedBy: ":") {
-                self.collectionViewElements = splittedData
-                self.collectionView.reloadData() // Reload
+            if let str = readDataAsString {
+                MentalistManager.instance.splitLetters(of: str) {
+                    self.collectionView.reloadData() // Reload
+                }
             }
         }
     }
@@ -42,39 +41,38 @@ class LettersViewController: UIViewController {
     // Explicit
     func resetView() {
         
-        if totalIterations == 2 {
-            // Navigate to final view
-            self.performSegue(withIdentifier: "toFinalScreen", sender: self)
-        }
-        else {
-            self.clickedCells = 0
-            self.totalIterations += 1
-            readFromServer()
+        MentalistManager.instance.reset { next in
+            if next {
+                self.performSegue(withIdentifier: "toFinalScreen", sender: self)
+            }
+            else { // One more
+                self.readFromServer()
+            }
         }
     }
 }
 
 extension LettersViewController:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionViewElements.count
+        return MentalistManager.instance.collectionViewElements.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "oneCell", for: indexPath) as! LetterCollectionViewCell
         
-        cell.letterLabel.text = collectionViewElements[indexPath.row]
+        cell.letterLabel.text = MentalistManager.instance.collectionViewElements[indexPath.row]
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let letter = collectionViewElements[indexPath.row]
+        let letter = MentalistManager.instance.collectionViewElements[indexPath.row]
         print("Click on " + letter)
         
         BLEManager.instance.sendData(data: letter.data(using: .utf8)!) { str in
             print("⬆️ Sent \(letter)")
-            self.clickedCells += 1
-            if self.clickedCells == self.collectionViewElements.count {
+            MentalistManager.instance.clickedCells += 1
+            if MentalistManager.instance.clickedCells == MentalistManager.instance.collectionViewElements.count {
                 self.resetView()
             }
         }
